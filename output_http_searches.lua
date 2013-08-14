@@ -17,9 +17,6 @@
 --  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 --
 
-
-require "pom"
-
 output_http_searches = pom.output.new("http_searches", {
 	{ "log_file", "string", "http_searches.log", "Log filename" },
 	{ "match", "string", "[&?]q=([^&]*)", "Lua pattern to match" }

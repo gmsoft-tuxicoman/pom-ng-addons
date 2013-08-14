@@ -17,9 +17,6 @@
 --  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 --
 
-
-require "pom"
-
 output_http_cookies = pom.output.new("http_cookies", {
 	{ "log_file", "string", "http_cookies.log", "Log filename" },
 })

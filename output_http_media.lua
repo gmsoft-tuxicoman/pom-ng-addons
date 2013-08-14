@@ -17,8 +17,6 @@
 --  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 --
 
-require "pom"
-
 output_http_media = pom.output.new("http_media", {
 	{ "prefix", "string", "/tmp/", "Prefix where to save the files" },
 	{ "log_file", "string", "http.log", "Log filename" },
