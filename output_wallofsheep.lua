@@ -35,7 +35,11 @@ function output_wallofsheep:process_http_request(evt)
 	local server = data["server_name"]
 	local status = data["status"]
 
-	password = password:sub(0, 2) .. "..."
+	if not status
+	then
+		status = "unknown";
+	end	
+
 
 	self.logfile:write("Found credentials via HTTP : " .. client .. " -> " .. server .. " | user : '" .. username .."', password : '" .. password .. "' (status " .. status .. ")\n")
 	self.logfile:flush()
@@ -64,6 +68,8 @@ function output_wallofsheep:process_smtp_auth(evt)
 
 	if not username or not password then return end
 
+	local status
+
 	if data["success"]
 	then
 		status = "success"
@@ -73,7 +79,6 @@ function output_wallofsheep:process_smtp_auth(evt)
 
 	local client = data["client_addr"]
 
-	password = password:sub(0, 2) .. "..."
 	self.logfile:write("Found credentials via SMTP : " .. client .. " -> " .. server .. " | user : '" .. username .. "', password : '" .. password .. "', method : '" .. method .. "' (status : " .. status .. ")\n")
 	self.logfile:flush()
 
