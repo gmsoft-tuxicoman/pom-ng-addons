@@ -69,10 +69,3 @@ function output_http_searches:close()
 
 end
 
-function output_http_searches_register()
-	
-	-- Register our new output
-	pom.output.register(output_http_searches)	
-end
-
-

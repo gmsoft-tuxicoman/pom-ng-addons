@@ -106,11 +106,3 @@ function output_http_media:close()
 
 
 end
-
-function output_http_media_register()
-	
-	-- Register our new output
-	pom.output.register(output_http_media)	
-end
-
-

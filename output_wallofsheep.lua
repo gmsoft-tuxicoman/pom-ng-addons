@@ -109,10 +109,3 @@ function output_wallofsheep:close()
 
 end
 
-function output_wallofsheep_register()
-	
-	-- Register our new output
-	pom.output.register(output_wallofsheep)	
-end
-
-

@@ -104,10 +104,4 @@ function output_http_cookies:close()
 
 end
 
-function output_http_cookies_register()
-	
-	-- Register our new output
-	pom.output.register(output_http_cookies)	
-end
-
 
