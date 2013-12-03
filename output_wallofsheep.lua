@@ -37,7 +37,7 @@ function output_wallofsheep:process_http_request(evt)
 
 	if not status
 	then
-		status = "unknown";
+		status = "unknown"
 	end	
 
 
@@ -68,18 +68,53 @@ function output_wallofsheep:process_smtp_auth(evt)
 
 	if not username or not password then return end
 
-	local status
-
-	if data["success"]
-	then
+	local status = "unknown"
+	local success = data["success"]
+	if success == true then
 		status = "success"
-	else
+	elseif success == false then
 		status = "auth failure"
 	end
 
 	local client = data["client_addr"]
 
 	self.logfile:write("Found credentials via SMTP : " .. client .. " -> " .. server .. " | user : '" .. username .. "', password : '" .. password .. "', method : '" .. method .. "' (status : " .. status .. ")\n")
+	self.logfile:flush()
+
+end
+
+function output_wallofsheep:process_ppp_pap_auth(evt)
+
+	local data = evt.data
+
+	local msg = "Found credentials via PPP-PAP : "
+
+	local client = data["client"]
+	local server = data["server"]
+	if client and server then
+		msg = msg ..  client .. " -> " .. server .. " "
+	end
+	
+	local top_proto = data["top_proto"]
+	if top_proto then
+		msg = msg .. "over " .. top_proto .. " "
+	end
+
+	local vlan = data["vlan"]
+	if vlan then
+		msg = msg .. "on vlan " .. vlan .. " "
+	end
+
+	msg = msg .. "| user : '" .. data["peer_id"] .. "', password : '" .. data["password"]
+
+	local status = "unknown"
+	local success = data["success"]
+	if success == true then
+		status = "success"
+	elseif success == false then
+		status = "auth failure"
+	end
+	self.logfile:write(msg .. "' (status : " .. status .. ")\n")
 	self.logfile:flush()
 
 end
@@ -94,6 +129,9 @@ function output_wallofsheep:open()
 
 	-- Listen to SMTP auth event
 	self:event_listen_start("smtp_auth", nil, self.process_smtp_auth)
+
+	-- Listen to PPP-PAP auth event
+	self:event_listen_start("ppp_pap_auth", nil, self.process_ppp_pap_auth)
 
 end
 
