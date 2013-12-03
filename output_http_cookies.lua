@@ -22,16 +22,31 @@ output_http_cookies = pom.output.new("http_cookies", {
 })
 
 cookie_table = {
-			["facebook.com"] = { "c_user", "datr", "lu" },
-			["www.linkedin.com"] = { "bcookie" },
-			["stackoverflow.com"] = { "usr" },
-			["amazon.com"] = { "x-main" },
-			["twitter.com"] = { "_twitter_sess", "auth_token" },
-			["google.com"] = { "SID", "NID", "HSID", "PREF" },
-			["tumblr.com"] = { "pfp" },
-			["www.reddit.com"] = { "reddit_session" },
-			["live.com"] = { "MSPProf", "MSPAuth", "RPSTAuth", "NAP" }
-
+			["amazon\.[a-z]*$"] = { "x-main" },
+			["bit\.ly$"] = { "user" },
+			["cisco\.com$"] = { "SMIDENTITY" },
+			["cnet\.com$"] = { "urs_sessionId" },
+			["enom\.com$"] = { "OatmealCookie", "EmailAddress" },
+			["evernode\.com$"] = { "auth" },
+			["facebook\.com$"] = { "c_user", "datr", "lu" },
+			["www\.fiverr\.com$"] = { "_fiverr_session" },
+			["flickr\.com$"] = { "cookie_session" },
+			["foursquare\.com$"] = { "ext_id", "XSESSIONID" },
+			--["google\.[a-z]*$"] = { "SID", "NID", "HSID", "PREF" },
+			["groupme\.com$"] = { "_groupme_session" },
+			["news\.ycombinator\.com$"] = { "user" }, -- hackkernewsq
+			["www\.linkedin\.com$"] = { "bcookie" },
+			["live\.com$"] = { "MSPProf", "MSPAuth", "RPSTAuth", "NAP" },
+			["nytimes\.com$"] = { "NYT-S", "nyt-d" },
+			["www\.quora\.com$"] = { "m-s", "m-b" },
+			["www\.reddit\.com$"] = { "reddit_session" },
+			["www\.shutterstock\.com$"] = { "ssssidd" },
+			["stackoverflow\.com$"] = { "usr" },
+			["tumblr\.com$"] = { "pfp" },
+			["twitter\.com$"] = { "_twitter_sess", "auth_token" },
+			["vimeo\.com$"] = { "vimeo" },
+			["yahoo\.[a-z]*$"] = { "T", "Y" },
+			["yelp\.com$"] = { "__utma" },
 		}
 
 function output_http_cookies:process_request(evt)
@@ -51,7 +66,7 @@ function output_http_cookies:process_request(evt)
 	local found = false
 	for hostname, cookies in pairs(cookie_table)
 	do
-		if server:sub(- hostname:len()) == hostname
+		if server:match(hostname)
 		then
 			cookie_found = 0
 			for k, session_cookie in pairs(cookies)
