@@ -1,6 +1,6 @@
 --
 --  Wall of sheep script for pom-ng. It dumps all the password seen.
---  Copyright (C) 2013 Guy Martin <gmsoft@tuxicoman.be>
+--  Copyright (C) 2013-2014 Guy Martin <gmsoft@tuxicoman.be>
 --
 --  This program is free software; you can redistribute it and/or modify
 --  it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
 --  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 --
 
-output_wallofsheep = pom.output.new("wallofsheep", {
+output_wallofsheep = pom.output.new("wallofsheep", "Log clear text password seen on the network", {
 	{ "log_file", "string", "wallofsheep.log", "Log filename" },
 })
 

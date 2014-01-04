@@ -1,6 +1,6 @@
 --
 --  Log searches performed over HTTP.
---  Copyright (C) 2013 Guy Martin <gmsoft@tuxicoman.be>
+--  Copyright (C) 2013-2014 Guy Martin <gmsoft@tuxicoman.be>
 --
 --  This program is free software; you can redistribute it and/or modify
 --  it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
 --  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 --
 
-output_http_searches = pom.output.new("http_searches", {
+output_http_searches = pom.output.new("http_searches", "Log searches performed by users on HTTP web sites", {
 	{ "log_file", "string", "http_searches.log", "Log filename" },
 	{ "match", "string", "[&?]q=([^&]*)", "Lua pattern to match" }
 })

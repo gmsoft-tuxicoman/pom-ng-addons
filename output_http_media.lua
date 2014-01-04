@@ -1,6 +1,6 @@
 --
 --  Demo script that dumps images and video from HTTP requets.
---  Copyright (C) 2013 Guy Martin <gmsoft@tuxicoman.be>
+--  Copyright (C) 2013-2014 Guy Martin <gmsoft@tuxicoman.be>
 --
 --  This program is free software; you can redistribute it and/or modify
 --  it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
 --  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 --
 
-output_http_media = pom.output.new("http_media", {
+output_http_media = pom.output.new("http_media", "Save images and video captured from HTTP requests", {
 	{ "prefix", "string", "/tmp/", "Prefix where to save the files" },
 	{ "log_file", "string", "http.log", "Log filename" },
 	{ "log_format", "string", "$server_name $client_addr $username $url [$query_time] \"$first_line\" $status $response_size", "Log format" },

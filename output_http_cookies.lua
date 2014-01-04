@@ -1,6 +1,6 @@
 --
 --  Session cookie dumping script for pom-ng.
---  Copyright (C) 2013 Guy Martin <gmsoft@tuxicoman.be>
+--  Copyright (C) 2013-2014 Guy Martin <gmsoft@tuxicoman.be>
 --
 --  This program is free software; you can redistribute it and/or modify
 --  it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
 --  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 --
 
-output_http_cookies = pom.output.new("http_cookies", {
+output_http_cookies = pom.output.new("http_cookies", "Save http session cookies", {
 	{ "log_file", "string", "http_cookies.log", "Log filename" },
 })
 
