@@ -143,6 +143,7 @@ function output_wallofsheep:close()
 
 	self:event_listen_stop("http_request")
 	self:event_listen_stop("smtp_auth")
+	self:event_listen_stop("ppp_pap_auth")
 
 
 end
