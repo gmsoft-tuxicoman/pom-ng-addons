@@ -45,7 +45,7 @@ cookie_table = {
 			["tumblr\.com$"] = { "pfp" },
 			["twitter\.com$"] = { "_twitter_sess", "auth_token" },
 			["vimeo\.com$"] = { "vimeo" },
-			["yahoo\.[a-z]*$"] = { "T", "Y" },
+			["yahoo\.[a-z]*$"] = { "T", "Y", "F" },
 			["yelp\.com$"] = { "__utma" },
 		}
 
