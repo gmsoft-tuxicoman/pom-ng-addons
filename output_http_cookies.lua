@@ -47,6 +47,7 @@ cookie_table = {
 			["vimeo\.com$"] = { "vimeo" },
 			["yahoo\.[a-z]*$"] = { "T", "Y", "F" },
 			["yelp\.com$"] = { "__utma" },
+			["instagram.com"] = { "sessionid" },
 		}
 
 function output_http_cookies:process_request(evt)
