@@ -82,7 +82,7 @@ function output_http_media:open()
 	self.log:open()
 
 	-- Listen to payloads
-	self:pload_listen_start(self.pload_open, nil, nil)
+	self:pload_listen_start(self.pload_open)
 
 	-- We need to listen to the http_request event so it will generate payloads
 	self:event_listen_start("http_request")
